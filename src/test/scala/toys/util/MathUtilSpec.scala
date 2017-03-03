@@ -3,6 +3,36 @@ package toys.util
 import org.scalatest.FlatSpec
 
 class MathUtilSpec extends FlatSpec {
+  "factorial" should "return 24 for 4!" in {
+    assertResult(24) {
+      MathUtil.factorial(4)
+    }
+  }
+  it should "return 1 for 0!" in {
+    assertResult(1) {
+      MathUtil.factorial(0)
+    }
+  }
+  it should "throw exception for factorial of negative numbers, which is undefined" in {
+    assertThrows[IllegalArgumentException] { 
+      MathUtil.factorial(-1)
+    }
+  }
+  "greatestCommonDivisor" should "return 0 if both numbers are zero" in {
+    assertResult(0) {
+      MathUtil.greatestCommonDivisor(0, 0)
+    }
+  }
+  it should "return 1 if both numbers are 1" in {
+    assertResult(1) {
+      MathUtil.greatestCommonDivisor(1, 1)
+    }
+  }
+  it should "return 7 if numbers are 14, 21" in {
+    assertResult(7) {
+      MathUtil.greatestCommonDivisor(14, 21)
+    }
+  }
   "signum" should "return 1 if n is greater than zero" in {
     assertResult(1) {
       MathUtil.signum(1)
