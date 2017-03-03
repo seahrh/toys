@@ -1,3 +1,14 @@
+# Project specific
+# =========================
+
+# Eclipse specific
+# =========================
+
+.cache*
+.classpath
+.project
+.settings/
+
 *.class
 *.log
 
