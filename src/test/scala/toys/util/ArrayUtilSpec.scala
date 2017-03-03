@@ -4,6 +4,12 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
 class ArrayUtilSpec extends FlatSpec with Matchers {
+  "orderByPositiveNumbersFirst" should "return a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order." in {
+    val a = Array(-1, 2, 3, 4, -10, 0, -12)
+    assertResult(Array(2, 3, 4, -1, -10, 0, -12)) {
+      ArrayUtil.orderByPositiveNumbersFirst(a)
+    }
+  }
   "swapAdjacent" should "return Int array where adjacent element pairs are swapped" in {
     val a = Array[Int](1, 2, 3, 4, 5)
     assertResult(Array[Int](2, 1, 4, 3, 5)) {
@@ -42,10 +48,10 @@ class ArrayUtilSpec extends FlatSpec with Matchers {
     assertResult(len) {
       a.length
     }
-    all (a) should (be >= min and be <= max)
+    all(a) should (be >= min and be <= max)
   }
   it should "throw exception if length is less than or equal to zero" in {
-    assertThrows[IllegalArgumentException] { 
+    assertThrows[IllegalArgumentException] {
       ArrayUtil.random(len = 0)
     }
   }
@@ -57,6 +63,6 @@ class ArrayUtilSpec extends FlatSpec with Matchers {
     assertResult(len) {
       a.length
     }
-    all (a) should (be >= min and be <= max)
+    all(a) should (be >= min and be <= max)
   }
 }
