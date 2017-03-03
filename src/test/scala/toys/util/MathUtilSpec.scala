@@ -3,6 +3,26 @@ package toys.util
 import org.scalatest.FlatSpec
 
 class MathUtilSpec extends FlatSpec {
+  "fib" should "return 0 for the 1st fibonacci number" in {
+    assertResult(0) {
+      MathUtil.fib(1)
+    }
+  }
+  it should "return 1 for the 2nd fibonacci number" in {
+    assertResult(1) {
+      MathUtil.fib(2)
+    }
+  }
+  it should "return 144 for the 13th fibonacci number" in {
+    assertResult(144) {
+      MathUtil.fib(13)
+    }
+  }
+  it should "throw exception because sequence number must be greater than zero" in {
+    assertThrows[IllegalArgumentException] { 
+      MathUtil.fib(0)
+    }
+  }
   "factorial" should "return 24 for 4!" in {
     assertResult(24) {
       MathUtil.factorial(4)

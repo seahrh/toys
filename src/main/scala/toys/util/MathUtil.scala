@@ -2,9 +2,22 @@ package toys.util
 
 object MathUtil {
   
+  def fib(n: Int): Int = {
+    if (n <= 0) {
+      throw new IllegalArgumentException("n must be greater than zero")
+    }
+    // (Tail recursion example)
+    def loop(i: Int, a: Int, b: Int): Int = {
+      if (i == n) a
+      else loop(i + 1, b, a + b)
+    }
+    // Fibonacci sequence starts with 0, 1, ...
+    loop(1, 0, 1)
+  }
+  
   def factorial(n: Int): Int = {
     if (n < 0) {
-      throw new IllegalArgumentException("n must not be less than zero")
+      throw new IllegalArgumentException("n must be greater than or equal to zero")
     }
     // (Tail recursion example)
     def loop(acc: Int, n: Int): Int = {
