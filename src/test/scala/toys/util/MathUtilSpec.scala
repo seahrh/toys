@@ -3,6 +3,14 @@ package toys.util
 import org.scalatest.FlatSpec
 
 class MathUtilSpec extends FlatSpec {
+  "isPrime" should "return true for prime numbers" in {
+    val ps = Array(7, 17, 31)
+    ps forall (p => MathUtil.isPrime(p) == true)
+  }
+  it should "return false for non-prime numbers" in {
+    val nps = Array(6, 21, 144)
+    nps forall (np => MathUtil.isPrime(np) == false)
+  }
   "scalarProduct" should "return the scalar product of two non-empty arrays" in {
     var xs = Array[Float](1.5F, 2.2F, 3.5F)
     var ys = Array[Float](4.2F, 5.5F, 6.4F)

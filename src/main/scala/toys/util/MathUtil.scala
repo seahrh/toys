@@ -2,6 +2,10 @@ package toys.util
 
 object MathUtil {
   
+  def isPrime(n: Int): Boolean = {
+    (2 until n) forall (d => n % d != 0)
+  }
+  
   def scalarProduct(xs: Array[Float], ys: Array[Float]): Float = {
     if (xs.length == 0) {
       throw new IllegalArgumentException("first array must not be empty")
