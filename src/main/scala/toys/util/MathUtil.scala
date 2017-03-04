@@ -2,6 +2,17 @@ package toys.util
 
 object MathUtil {
   
+  def scalarProduct(xs: Array[Float], ys: Array[Float]): Float = {
+    if (xs.length == 0) {
+      throw new IllegalArgumentException("first array must not be empty")
+    }
+    if (ys.length == 0) {
+      throw new IllegalArgumentException("second array must not be empty")
+    }
+    // Pattern matching function value in map{}
+    (xs zip ys).map{ case (x, y) => x * y }.sum
+  }
+  
   def fib(n: Int): Int = {
     if (n <= 0) {
       throw new IllegalArgumentException("n must be greater than zero")

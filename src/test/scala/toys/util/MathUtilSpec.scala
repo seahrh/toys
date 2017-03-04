@@ -3,6 +3,32 @@ package toys.util
 import org.scalatest.FlatSpec
 
 class MathUtilSpec extends FlatSpec {
+  "scalarProduct" should "return the scalar product of two non-empty arrays" in {
+    var xs = Array[Float](1.5F, 2.2F, 3.5F)
+    var ys = Array[Float](4.2F, 5.5F, 6.4F)
+    assertResult(40.8F) {
+      MathUtil.scalarProduct(xs, ys)
+    }
+    xs = Array(1F)
+    ys = Array(2F)
+    assertResult(2F) {
+      MathUtil.scalarProduct(xs, ys)
+    }
+  }
+  it should "throw exception if the first array is empty" in {
+    var xs = Array[Float]()
+    var ys = Array[Float](4.2F, 5.5F, 6.4F)
+    assertThrows[IllegalArgumentException] { 
+      MathUtil.scalarProduct(xs, ys)
+    }
+  }
+  it should "throw exception if the second array is empty" in {
+    var xs = Array[Float](1.5F, 2.2F, 3.5F)
+    var ys = Array[Float]()
+    assertThrows[IllegalArgumentException] { 
+      MathUtil.scalarProduct(xs, ys)
+    }
+  }
   "fib" should "return 0 for the 1st fibonacci number" in {
     assertResult(0) {
       MathUtil.fib(1)
