@@ -6,6 +6,25 @@ object MathUtil {
     (2 until n) forall (d => n % d != 0)
   }
   
+  /**
+ * Given a positive integer n, find all the pairs of positive integers (i, j) 
+ * such that 1 <= j < i < n, and i + j is prime.
+ * 
+ * @param n
+ * @return
+ */
+def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
+    if (n <= 0) {
+      throw new IllegalArgumentException("n must be a positive integer")
+    }
+    // for-expression with multiple sequence generators in curly braces
+    for {
+      i <- 1 until n // 1st generator
+      j <- 1 until i // 2nd generator
+      if isPrime(i + j) // filter
+    } yield (i, j)
+  }
+  
   def scalarProduct(xs: Array[Float], ys: Array[Float]): Float = {
     if (xs.length == 0) {
       throw new IllegalArgumentException("first array must not be empty")

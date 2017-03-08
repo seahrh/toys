@@ -11,6 +11,29 @@ class MathUtilSpec extends FlatSpec {
     val nps = Array(6, 21, 144)
     nps forall (np => MathUtil.isPrime(np) == false)
   }
+  "pairsHavingPrimeSum" should "return pairs where the sum is a prime number" in {
+    var r = Vector[(Int, Int)]((2,1))
+    assertResult(r) {
+      MathUtil.pairsHavingPrimeSum(3)
+    }
+    r = Vector[(Int, Int)]((2,1), (3,2))
+    assertResult(r) {
+      MathUtil.pairsHavingPrimeSum(4)
+    }
+    r = Vector[(Int, Int)]((2,1), (3,2), (4,1), (4,3))
+    assertResult(r) {
+      MathUtil.pairsHavingPrimeSum(5)
+    }
+    r = Vector[(Int, Int)]((2,1), (3,2), (4,1), (4,3), (5,2), (6,1), (6,5))
+    assertResult(r) {
+      MathUtil.pairsHavingPrimeSum(7)
+    }
+  }
+  it should "throw exception if n is less than 1" in {
+    assertThrows[IllegalArgumentException] { 
+      MathUtil.pairsHavingPrimeSum(0)
+    }
+  }
   "scalarProduct" should "return the scalar product of two non-empty arrays" in {
     var xs = Array[Float](1.5F, 2.2F, 3.5F)
     var ys = Array[Float](4.2F, 5.5F, 6.4F)
