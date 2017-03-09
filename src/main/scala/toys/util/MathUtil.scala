@@ -84,10 +84,7 @@ def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
   }
 
   def sum(args: Int*): Int = {
-    var ret = 0
-    for (arg <- args) {
-      ret += arg
-    }
-    ret
+    val default = 0
+    (args foldLeft default)((x, y) => x + y)
   }
 }
