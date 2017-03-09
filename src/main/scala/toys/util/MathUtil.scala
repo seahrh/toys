@@ -1,19 +1,19 @@
 package toys.util
 
 object MathUtil {
-  
+
   def isPrime(n: Int): Boolean = {
     (2 until n) forall (d => n % d != 0)
   }
-  
+
   /**
- * Given a positive integer n, find all the pairs of positive integers (i, j) 
- * such that 1 <= j < i < n, and i + j is prime.
- * 
- * @param n
- * @return
- */
-def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
+   * Given a positive integer n, find all the pairs of positive integers (i, j)
+   * such that 1 <= j < i < n, and i + j is prime.
+   *
+   * @param n
+   * @return
+   */
+  def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
     if (n <= 0) {
       throw new IllegalArgumentException("n must be a positive integer")
     }
@@ -24,7 +24,7 @@ def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
       if isPrime(i + j) // filter
     } yield (i, j)
   }
-  
+
   def scalarProduct(xs: Array[Float], ys: Array[Float]): Float = {
     if (xs.length == 0) {
       throw new IllegalArgumentException("first array must not be empty")
@@ -33,9 +33,9 @@ def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
       throw new IllegalArgumentException("second array must not be empty")
     }
     // Pattern matching function value in map{}
-    (xs zip ys).map{ case (x, y) => x * y }.sum
+    (xs zip ys).map { case (x, y) => x * y }.sum
   }
-  
+
   def fib(n: Int): Int = {
     if (n <= 0) {
       throw new IllegalArgumentException("n must be greater than zero")
@@ -48,7 +48,7 @@ def pairsHavingPrimeSum(n: Int): IndexedSeq[(Int, Int)] = {
     // Fibonacci sequence starts with 0, 1, ...
     loop(1, 0, 1)
   }
-  
+
   def factorial(n: Int): Int = {
     if (n < 0) {
       throw new IllegalArgumentException("n must be greater than or equal to zero")
